@@ -14,4 +14,15 @@ public class Notepad_entitiy {
     private String title;
 
     private String description;
+
+    public Notepad_entitiy() {
+
+    }
+
+    public Notepad_entitiy(String title,String description){
+        this.title=title;
+        this.description=description;
+    }
+
+
 }
