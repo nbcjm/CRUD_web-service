@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>메모장</title>
 </head>
 <body>
-$END$
+    <h1>Notepad</h1>
+    <div th:with="List=<li>${notepad.title}<li/>">
+        <ul>
+
+        </ul>
+    </div>
 </body>
 </html>

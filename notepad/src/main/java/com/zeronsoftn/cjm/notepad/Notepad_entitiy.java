@@ -5,11 +5,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+
 @Entity
 public class Notepad_entitiy {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private long createnum;
 
     private String title;
 
