@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    username: cjm
+    password: 9009
+  jpa:
+    hibernate:
+      ddl-auto: update
+  thymeleaf:
+    view-names: thymeleaf/*
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
+    check-template-location: true
