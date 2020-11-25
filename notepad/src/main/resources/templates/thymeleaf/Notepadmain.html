@@ -6,10 +6,8 @@
 </head>
 <body>
     <h1>Notepad</h1>
-    <div th:with="List=<li>${notepad.title}<li/>">
-        <ul>
-
-        </ul>
+    <div th:each="List=${notepad}">
+        <ul th:text="${List}"></ul>
     </div>
 </body>
 </html>
