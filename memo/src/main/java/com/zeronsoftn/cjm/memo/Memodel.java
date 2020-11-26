@@ -1,12 +1,16 @@
 package com.zeronsoftn.cjm.memo;
 
+import lombok.*;
+
 import javax.persistence.*;
 
+@Getter
+@NoArgsConstructor
 @Entity(name="memo")
 public class Memodel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer createorder;
 
     @Column
@@ -15,11 +19,9 @@ public class Memodel {
     @Column
     private String description;
 
-    public Memodel(){
-
-    }
-
-    public Memodel(String title, String description){
+    @Builder
+    public Memodel(Integer createorder, String title, String description){
+        this.createorder=createorder;
         this.title=title;
         this.description=description;
     }

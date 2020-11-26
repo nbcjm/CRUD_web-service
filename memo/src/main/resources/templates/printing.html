@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p><h1>Notepad</h1></p>
+<p><h2 th:text="${Memo.title}"></h2></p>
+<p style="margin-top:45px;" th:text="${Memo.description}"></p>
+<form th:action="@{'/printing/'+${Memo.createorder}}" method="post">
+    <input type="hidden" name="_method" value="delete"/><!--axios-->
+    <input type="submit" value="Delete">
+</form>
+</body>
+</html>

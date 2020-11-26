@@ -8,6 +8,8 @@ import java.util.Optional;
 
 @Repository
 public interface Memorepo extends JpaRepository<Memodel, Integer> {
+    public List<Memodel> findByCreateorder(Integer createorder);
+
     public List<Memodel> findByTitle(String title);
 
 

@@ -2,6 +2,7 @@ package com.zeronsoftn.cjm.memo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,8 +29,40 @@ public class Memosvc {
         memorepo.deleteById(createorder);
     }
 
-    public Memodel save(Memodel memo){
-        memorepo.save(memo);
-        return memo;
+    @Transactional
+    public Integer save(Memodto memodto){
+        return memorepo.save(memodto.Pass()).getCreateorder();
+    }
+
+    @Transactional
+    public List<Memodto> LoadList(){
+        List<Memodel> MemoList = memorepo.findAll();
+        List<Memodto> MemodtoList = new ArrayList<>();
+
+        for (Memodel memodel : MemoList){
+            Memodto memodto = Memodto.builder()
+                    .createorder(memodel.getCreateorder())
+                    .title(memodel.getTitle())
+                    .description(memodel.getDescription())
+                    .build();
+            MemodtoList.add(memodto);
+        }
+        return MemodtoList;
+    }
+    @Transactional
+    public Memodto LoadMemo(Integer createorder){
+        Memodel memodel = memorepo.findById(createorder).get();
+
+        Memodto memodto = Memodto.builder()
+                .createorder(memodel.getCreateorder())
+                .title(memodel.getTitle())
+                .description(memodel.getDescription())
+                .build();
+        return memodto;
+    }
+
+    @Transactional
+    public void DeleteMemo(Integer createorder){
+        memorepo.deleteById(createorder);
     }
 }

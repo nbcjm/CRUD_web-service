@@ -3,12 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        .tab {text-indent: 22px;}
+    </style>
 </head>
 <body>
     <h1>Notepad</h1>
-    <h2>memolist</h2>
+    <h2 class="tab">memolist</h2>
     <ul>
-        <li th:each="memoList:${List}" th:text="${memoList}"></li>
+        <li th:each="memoList:${List}"><a th:text="${memoList.title}" th:href="@{'/printing/'+${memoList.createorder}}"></a></li>
     </ul>
+    <button type="button" onclick="location.href='/posting'">write new one</button>
+<p>if you want to delete/update that, click memo and click button</p>
 </body>
 </html>
