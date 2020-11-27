@@ -40,7 +40,20 @@ public class MemoController {
 
     @PostMapping("/posting")
     public String Posting(Memodto memodto){
-        memosvc.save(memodto);
-        return "redirect:/";//redirect:/ /로 돌아감
+        Integer createorder=memosvc.save(memodto);
+        return "redirect:/printing/"+createorder;
+    }
+
+    @GetMapping("/printing/rewriting/{createorder}")
+    public String Rewriting(@PathVariable("createorder") Integer createorder, Model model){
+        Memodto Memo = memosvc.LoadMemo(createorder);
+        model.addAttribute("Memo", Memo);
+        return "rewriting.html";
+    }
+
+    @PutMapping("/printing/rewriting/{createorder}")
+    public String Rewriting(Memodto memodto){
+        Integer createorder = memosvc.save(memodto);
+        return "redirect:/printing/"+createorder;
     }
 }
